@@ -31,3 +31,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/.idea/vcs.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/rails-social-network.iml
