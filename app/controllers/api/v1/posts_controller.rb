@@ -21,6 +21,17 @@ class Api::V1::PostsController < ApplicationController
     }
   end
 
+  def destroy
+    # Destroy the images, comments, likes associated to this post and finally delete the post
+    # TODO: check the implementation of all active record delete methods
+    @post = Post.find(params[:id])
+    @post.destroy!
+
+    render json: {
+      message: "Post deleted successfully"
+    }, status: :ok
+  end
+
   # edit and delete posts too
   private
 

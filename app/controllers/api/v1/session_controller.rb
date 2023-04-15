@@ -5,11 +5,11 @@ class Api::V1::SessionController < ApplicationController
 
     if user&.valid_password?(params[:password])
       # head(:created)
-      render json: user.as_json(only: [:email, :authentication_token])
+      headers['X-Auth-Token'] = user.authentication_token
+      render json: user.as_json(only: [:email])
     else
       head(:unauthorized)
     end
-
   end
 
   def destroy
