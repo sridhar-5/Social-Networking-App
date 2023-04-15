@@ -42,7 +42,7 @@ class Api::V1::FriendRequestController < ApplicationController
   def reject_request
     if current_user
       data = reject_request_params
-      @reject_friend_request = FriendRequest.find_by(friend_request_from_id: data["friend_id"])
+      @reject_friend_request = FriendRequest.find_by(friend_request_from_id: data["friend_id"], friend_request_to_id: current_user.id)
       @reject_friend_request.update!(status: :rejected)
 
       render json: {
