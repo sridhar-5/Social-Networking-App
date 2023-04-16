@@ -16,6 +16,12 @@ class Api::V1::PostsController < ApplicationController
       images << {"url" => image, "post" => @post}
     end
     @images = Image.create!(images)
+
+    # trigger event to update the users feeds when the current_user posts
+    # if @post and @images
+    #   @post.trigger_event(@post.id)
+    # end
+
     render json: {
       post: @post.as_json(include: :images)
     }

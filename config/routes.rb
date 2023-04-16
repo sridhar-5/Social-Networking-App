@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       post "/friend_request", to: "friend_request#create"
       patch "/accept_friend_request", to: "friend_request#accept_request"
       patch "/reject_friend_request", to: "friend_request#reject_request"
+      get "/get_feed", to: "feed#index"
     end
   end
 

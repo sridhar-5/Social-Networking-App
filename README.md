@@ -1,5 +1,6 @@
 # README
 
+- TODO: Groups feature in facebook
 
 - Add this feature in the near future
   - feature to tag friends in a post or mention them
@@ -9,7 +10,6 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
 
 * Ruby version
 
