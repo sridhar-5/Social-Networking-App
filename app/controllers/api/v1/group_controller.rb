@@ -17,13 +17,13 @@ class Api::V1::GroupController < ApplicationController
         }
       )
       # assigning admin role to the group creator
-      @set_permission = GroupPermission.create!({"user" => current_user, "group" => @group, "role" => "admin"})
+      GroupPermission.create!({"user" => current_user, "group" => @group, "role" => "admin"})
 
       # assigning all other members of the group with an member role
       data["user_ids"].each do |user_id|
         user = User.find(user_id)
         @group.users << user
-        @set_permission = GroupPermission.create!({"user" => user, "group" => @group, "role" => :member})
+        GroupPermission.create!({"user" => user, "group" => @group, "role" => :member})
       end
     end
 

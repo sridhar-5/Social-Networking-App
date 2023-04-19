@@ -168,3 +168,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_17_180203) do
   add_foreign_key "products", "categories"
   add_foreign_key "products", "users"
 end
+
