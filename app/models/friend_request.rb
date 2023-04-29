@@ -9,9 +9,9 @@ class FriendRequest < ApplicationRecord
   validates :friend_request_to_id, uniqueness: { scope: :friend_request_from_id }
   validates :friend_request_from_id, uniqueness: { scope: :friend_request_to_id }
 
-
+  # TODO: saved_change_to_attribute? & attribute_changed? - Look into this once
   def trigger_event(user_id, friend_id)
-    @create_friendship = Friendship.create!({"user" => User.find(user_id), "friend" => User.find(friend_id)})
+    @create_friendship = Friendship.create!({"user" => current_user, "friend" => User.find(friend_id)})
   end
 
   private

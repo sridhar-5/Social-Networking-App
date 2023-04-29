@@ -30,6 +30,7 @@ class Api::V1::FriendRequestController < ApplicationController
       data = accept_request_params
       @accept_friend_request = FriendRequest.find_by(friend_request_from_id: data["friend_id"], friend_request_to_id: current_user.id)
       @accept_friend_request.update!(status: :accepted)
+      # TODO: Dive a bit deeper into this explicit call
       if @accept_friend_request.saved_change_to_status?
         @accept_friend_request.trigger_event(current_user.id, data["friend_id"])
       end
