@@ -1,8 +1,17 @@
 class Api::V1::UserController < ApplicationController
 
   before_action :authenticate_user!, only: [:index, :destroy]
+
   def create
-    user = User.create!(user_params)
+    data = user_params
+    user = User.create!({
+                          "username" => data["username"],
+                          "name" => data["name"],
+                          "email" => data["email"],
+                          "password" => data["password"],
+                          "password_confirmation" => data["password_confirmation"],
+                          "role" => :appuser
+                        })
 
     # login user right away
     if user
@@ -12,7 +21,7 @@ class Api::V1::UserController < ApplicationController
         user: user.slice(:name, :username, :email, :avatar, :bio)
       }
     else
-      render json: {status: :unprocessable_entity}
+      render json: { status: :unprocessable_entity }
     end
   end
 
@@ -41,6 +50,7 @@ class Api::V1::UserController < ApplicationController
   # TODO: Think about how to implement the patch route for user profile.
 
   private
+
   def user_params
     params.require(:user).permit(:username, :name, :email, :password, :password_confirmation)
   end

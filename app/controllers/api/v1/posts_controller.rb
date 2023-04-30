@@ -17,7 +17,7 @@ class Api::V1::PostsController < ApplicationController
     end
     @images = Image.create!(images)
 
-    # trigger event to update the users feeds when the current_user posts
+    #    trigger event to update the users feeds when the current_user posts
     # if @post and @images
     #   @post.trigger_event(@post.id)
     # end

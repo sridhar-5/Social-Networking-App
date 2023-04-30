@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_17_180203) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_30_120210) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -148,6 +148,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_17_180203) do
     t.string "unlock_token"
     t.datetime "locked_at"
     t.string "authentication_token", limit: 30
+    t.string "role"
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
   end
 
@@ -168,4 +169,3 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_17_180203) do
   add_foreign_key "products", "categories"
   add_foreign_key "products", "users"
 end
-
