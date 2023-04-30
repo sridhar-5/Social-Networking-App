@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_04_30_120210) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -19,8 +22,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_30_120210) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "post_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -30,8 +33,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_30_120210) do
 
   create_table "friend_requests", force: :cascade do |t|
     t.string "status"
-    t.integer "friend_request_from_id", null: false
-    t.integer "friend_request_to_id", null: false
+    t.bigint "friend_request_from_id", null: false
+    t.bigint "friend_request_to_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["friend_request_from_id"], name: "index_friend_requests_on_friend_request_from_id"
@@ -39,8 +42,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_30_120210) do
   end
 
   create_table "friendships", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "friend_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "friend_id", null: false
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -49,8 +52,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_30_120210) do
   end
 
   create_table "group_permissions", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "group_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
     t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -62,28 +65,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_30_120210) do
     t.string "name"
     t.text "description"
     t.string "image_url"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
   create_table "groups_users", id: false, force: :cascade do |t|
-    t.integer "group_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "group_id", null: false
+    t.bigint "user_id", null: false
   end
 
   create_table "images", force: :cascade do |t|
     t.string "url"
-    t.integer "post_id", null: false
+    t.bigint "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_images_on_post_id"
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "post_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_likes_on_post_id"
@@ -92,7 +95,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_30_120210) do
 
   create_table "posts", force: :cascade do |t|
     t.string "content"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
@@ -100,7 +103,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_30_120210) do
 
   create_table "product_images", force: :cascade do |t|
     t.string "url"
-    t.integer "product_id", null: false
+    t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_product_images_on_product_id"
@@ -111,10 +114,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_30_120210) do
     t.float "price"
     t.string "location"
     t.string "description"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "category_id", null: false
+    t.bigint "category_id", null: false
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end

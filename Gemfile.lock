@@ -128,6 +128,7 @@ GEM
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pg (1.5.3)
     puma (5.6.5)
       nio4r (~> 2.0)
     racc (1.6.2)
@@ -220,6 +221,7 @@ DEPENDENCIES
   devise
   factory_bot_rails
   faker
+  pg
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.4, >= 7.0.4.3)
