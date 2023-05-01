@@ -24,6 +24,25 @@ RSpec.describe User, type: :model do
     it "create admin user" do
       expect(admin_user.isAdmin).to eq(true)
     end
+  end
+
+  context "authentication specs" do
+    let(:user) { create(:user) }
+
+    it 'authenticates with valid email and password' do
+      authenticated_user = User.authenticate(user.email, user.password)
+      expect(authenticated_user).to eq(user)
+    end
+
+    it 'does not authenticate with invalid password' do
+      authenticated_user = User.authenticate(user.email, 'wrongpassword')
+      expect(authenticated_user).to be_nil
+    end
+
+    it 'does not authenticate with invalid email' do
+      authenticated_user = User.authenticate('invalidemail@example.com', user.password)
+      expect(authenticated_user).to be_nil
+    end
 
   end
   #
