@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :friend_request do
-    status { "MyString" }
-    friend_request_from { nil }
-    friend_request_to { nil }
+    status { FriendRequest.status.keys.sample }
+    association :friend_request_from, factory: :user
+    association :friend_request_to, factory: :user
   end
 end

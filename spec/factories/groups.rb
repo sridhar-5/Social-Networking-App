@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :group do
-    name { "MyString" }
-    description { "MyText" }
-    url { "MyString" }
-    user { nil }
+    name { Faker::Team.name  }
+    description { Faker::Lorem.paragraph }
+    image_url { Faker::Internet.url }
+    user
   end
 end

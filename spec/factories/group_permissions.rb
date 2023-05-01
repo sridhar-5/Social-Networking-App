@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :group_permission do
-    user { nil }
-    group { nil }
-    role { "MyString" }
+    user
+    group
+    role { GroupPermission.roles.keys.sample }
   end
 end

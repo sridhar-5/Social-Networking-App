@@ -4,6 +4,14 @@ FactoryBot.define do
     email { Faker::Internet.email(name: name) }
     username {Faker::Internet.username }
     password {Faker::Internet.password }
+    isAdmin { false }
+
+
+    # if the user is admin just role changes so
+    trait :admin do
+      isAdmin {true}
+    end
+
   end
 end
 

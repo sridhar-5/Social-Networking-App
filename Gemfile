@@ -56,3 +56,4 @@ end
 gem "sidekiq", "~> 7.0"
 gem 'devise'
 gem 'simple_token_authentication', '~> 1.0'
+gem "byebug", "~> 11.1", :groups => [:development, :test]
