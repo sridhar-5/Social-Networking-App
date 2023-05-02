@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :comment do
-    user
-    post
+    user { User.all.sample }
+    post { Post.all.sample }
     content { Faker::Lorem.sentence }
   end
 end

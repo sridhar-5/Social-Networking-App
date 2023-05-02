@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "association tests" do
+    it { should belong_to(:user) }
+    it { should have_many(:comments) }
+    it { should have_many(:likes) }
+    it { should have_many(:images) }
+  end
 end

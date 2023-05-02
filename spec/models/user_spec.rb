@@ -43,19 +43,19 @@ RSpec.describe User, type: :model do
       authenticated_user = User.authenticate('invalidemail@example.com', user.password)
       expect(authenticated_user).to be_nil
     end
-
   end
+
   #
-  # context "test associations" do
-  # it { should have_many(:group_permissions) }
-  # it { should have_many(:posts) }
-  # it { should have_many(:friendships) }
-  # it { should have_many(:comments) }
-  # it { should have_many(:likes) }
-  # it { should have_many(:friend_requests_from).class_name('User').with_foreign_key('friend_request_from_id') }
-  # it { should have_many(:friend_requests_to).class_name('User').with_foreign_key('friend_request_to_id') }
-  # it { should have_and_belong_to_many(:groups) }
-  # end
+  context "test associations" do
+    it { should have_many(:group_permissions) }
+    it { should have_many(:posts) }
+    it { should have_many(:friendships) }
+    it { should have_many(:comments) }
+    it { should have_many(:likes) }
+    it { should have_many(:friend_requests_from).class_name('FriendRequest').with_foreign_key('friend_request_from_id') }
+    it { should have_many(:friend_requests_to).class_name('FriendRequest').with_foreign_key('friend_request_to_id') }
+    it { should have_and_belong_to_many(:groups) }
+  end
 
   context "deletion of user" do
     let!(:user) { create(:user) }

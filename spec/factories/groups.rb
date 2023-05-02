@@ -3,6 +3,6 @@ FactoryBot.define do
     name { Faker::Team.name  }
     description { Faker::Lorem.paragraph }
     image_url { Faker::Internet.url }
-    user
+    user { User.all.sample }
   end
 end
