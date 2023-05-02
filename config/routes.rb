@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
 
-      resources :user , only: [:create, :destroy, :index]
+      resources :user , only: [:create, :destroy, :index] do
+        resources :group, only: [:create, :index]
+      end
       resources :session, only: [:create, :destroy]
       resources :posts
       #friend_request_routes
