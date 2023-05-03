@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :image do
-    url { "MyString" }
-    post { nil }
+    url { Faker::Internet.url }
+    post { Post.all.sample }
   end
 end
