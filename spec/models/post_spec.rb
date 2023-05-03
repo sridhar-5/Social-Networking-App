@@ -36,7 +36,7 @@ RSpec.describe Post, type: :model do
 
 
       post_1.destroy
-      byebug
+
       expect(user.posts.count).to eq(0)
       expect(post_1.images.count).to eq(0)
       expect(post_1.comments.count).to eq(0)
