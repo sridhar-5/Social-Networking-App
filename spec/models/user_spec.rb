@@ -99,6 +99,8 @@ RSpec.describe User, type: :model do
       expect(user.comments.count).to eq(0)
       expect(user.groups.count).to eq(0)
       expect(user.group_permissions.count).to eq(0)
+      expect(user_1.groups.count).to eq(1)
+      expect(user_1.groups.first.users.count).to eq(1)
     end
   end
 

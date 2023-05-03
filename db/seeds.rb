@@ -102,5 +102,8 @@ end
 Friendship.create(friendships)
 
 
+# TODO: CREATE DATA FOR FRIEND REQUESTS MODEL TOO
+
+
 
 
