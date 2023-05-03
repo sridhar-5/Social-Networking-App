@@ -1,5 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Group, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  before(:each) do
+    let!(user) {create(:user)} # group creator
+  end
+
+  context "create a group with a few users" do
+    let!(:user1) {create(:user)}
+    let!(:user2) {create(:user)}
+    let!(:user3) {create(:user)}
+
+  end
 end

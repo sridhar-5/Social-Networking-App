@@ -93,6 +93,7 @@ RSpec.describe User, type: :model do
       expect(user.group_permissions.count).to eq(3)
 
       user.destroy
+      byebug
       expect(user.posts.count).to eq(0)
       expect(user.likes.count).to eq(0)
       expect(user.comments.count).to eq(0)
