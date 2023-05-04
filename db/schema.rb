@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_01_123220) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_04_160045) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -139,7 +139,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_01_123220) do
     t.datetime "reset_password_sent_at"
     t.integer "sign_in_count"
     t.string "authentication_token", limit: 30
-    t.boolean "isAdmin"
+    t.integer "role", default: 94907
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
   end
 
