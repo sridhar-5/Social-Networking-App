@@ -10,7 +10,7 @@ class Api::V1::UserController < ApplicationController
                           "email" => data["email"],
                           "password" => data["password"],
                           "password_confirmation" => data["password_confirmation"],
-                          "role" => :role
+                          "role" => :appuser
                         })
 
     # login user right away
