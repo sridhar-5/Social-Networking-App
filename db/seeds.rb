@@ -18,7 +18,7 @@ require 'faker'
     bio: Faker::Lorem.sentence,
     username: Faker::Internet.username,
     password: Faker::Internet.password,
-    isAdmin: false
+    role: :appuser
   )
 end
 

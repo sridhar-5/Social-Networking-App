@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  enum role: {:appuser => 94907, :admin => 75693}
   validates :username, presence: true
   validates :email, presence: true, uniqueness: true
   has_many :group_permissions, dependent: :destroy
