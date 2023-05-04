@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_30_120210) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_01_123220) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -137,21 +137,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_30_120210) do
     t.string "encrypted_password"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
     t.integer "sign_in_count"
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip"
-    t.string "last_sign_in_ip"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
-    t.integer "failed_attempts"
-    t.string "unlock_token"
-    t.datetime "locked_at"
     t.string "authentication_token", limit: 30
-    t.string "role"
+    t.boolean "isAdmin"
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
   end
 
@@ -163,7 +151,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_30_120210) do
   add_foreign_key "friendships", "users", column: "friend_id"
   add_foreign_key "group_permissions", "groups"
   add_foreign_key "group_permissions", "users"
-  add_foreign_key "groups", "users"
+  add_foreign_key "groups", "users", on_delete: :cascade
   add_foreign_key "images", "posts"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"

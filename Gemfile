@@ -39,6 +39,10 @@ gem 'pg'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem "rack-cors"
+gem "sidekiq", "~> 7.0"
+gem 'devise'
+gem 'simple_token_authentication', '~> 1.0'
+gem "byebug", "~> 11.1", :groups => [:development, :test]
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -47,12 +51,13 @@ group :development, :test do
   gem 'factory_bot_rails'
 end
 
+group :test do
+  gem 'shoulda-matchers', '~> 5.0'
+end
+
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
 
 
-gem "sidekiq", "~> 7.0"
-gem 'devise'
-gem 'simple_token_authentication', '~> 1.0'
