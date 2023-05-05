@@ -2,7 +2,6 @@ class Api::V1::GroupController < ApplicationController
   before_action :authenticate_user! , only: [:create]
 
   def index
-    # group feed
 
   end
 
