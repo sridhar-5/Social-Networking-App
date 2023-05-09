@@ -28,8 +28,8 @@ RSpec.describe Post, type: :model do
     let!(:image_3) { create(:image, post: post_2)}
 
     #creating likes for user
-    let!(:like_1) { create(:like, user: user, post: post_1) }
-    let!(:like_2) { create(:like, user: user, post: post_2) }
+    let!(:like_1) { create(:reaction, user: user, post: post_1, reaction_type: like) }
+    let!(:like_2) { create(:reaction, user: user, post: post_2, reaction_type: like) }
 
     # creating comments for user
     let!(:comment_1) { create(:comment, user: user, post: post_1 ) }
@@ -41,8 +41,8 @@ RSpec.describe Post, type: :model do
       expect(user_1.posts.count).to eq(1)
       expect(post_1.images.count).to eq(2)
       expect(post_2.images.count).to eq(1)
-      expect(post_1.likes.count).to eq(1)
-      expect(post_2.likes.count).to eq(1)
+      expect(post_1.reactions.count).to eq(1)
+      expect(post_2.reactions.count).to eq(1)
       expect(post_1.comments.count).to eq(1)
       expect(post_2.comments.count).to eq(1)
 
@@ -53,8 +53,8 @@ RSpec.describe Post, type: :model do
       expect(user_1.posts.count).to eq(0)
       expect(post_1.images.count).to eq(0)
       expect(post_2.images.count).to eq(0)
-      expect(post_1.likes.count).to eq(0)
-      expect(post_2.likes.count).to eq(0)
+      expect(post_1.reactions.count).to eq(0)
+      expect(post_2.reactions.count).to eq(0)
       expect(post_1.comments.count).to eq(0)
       expect(post_2.comments.count).to eq(0)
     end

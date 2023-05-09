@@ -51,7 +51,7 @@ RSpec.describe User, type: :model do
     it { should have_many(:posts) }
     it { should have_many(:friendships) }
     it { should have_many(:comments) }
-    it { should have_many(:likes) }
+    it { should have_many(:reactions) }
     it { should have_many(:friend_requests_from).class_name('FriendRequest').with_foreign_key('friend_request_from_id') }
     it { should have_many(:friend_requests_to).class_name('FriendRequest').with_foreign_key('friend_request_to_id') }
     it { should have_and_belong_to_many(:groups) }
@@ -65,8 +65,8 @@ RSpec.describe User, type: :model do
     let!(:post_2) { create(:post, user: user) }
 
     # creating likes for user
-    let!(:like_1) { create(:like, user: user, post: post_1) }
-    let!(:like_2) { create(:like, user: user, post: post_2) }
+    let!(:like_1) { create(:reaction, user: user, post: post_1, reaction_type: like) }
+    let!(:like_2) { create(:reaction, user: user, post: post_2, reaction_type: like) }
 
     # creating comments for user
     let!(:comment_1) { create(:comment, user: user, post: post_1) }
@@ -87,7 +87,7 @@ RSpec.describe User, type: :model do
 
     it "when user gets deleted" do
       expect(user.posts.count).to eq(2)
-      expect(user.likes.count).to eq(2)
+      expect(user.reactions.count).to eq(2)
       expect(user.comments.count).to eq(2)
       expect(user.groups.count).to eq(3)
       expect(user.group_permissions.count).to eq(3)
@@ -95,7 +95,7 @@ RSpec.describe User, type: :model do
       user.destroy
 
       expect(user.posts.count).to eq(0)
-      expect(user.likes.count).to eq(0)
+      expect(user.reactions.count).to eq(0)
       expect(user.comments.count).to eq(0)
       expect(user.groups.count).to eq(0)
       expect(user.group_permissions.count).to eq(0)
