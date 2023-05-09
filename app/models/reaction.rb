@@ -1,4 +1,5 @@
-class Like < ApplicationRecord
+class Reaction < ApplicationRecord
+  enum reaction_type: {like: 8, funny: 9, congratulate: 10, support: 11, informative: 12}
   belongs_to :user
   belongs_to :post
 
