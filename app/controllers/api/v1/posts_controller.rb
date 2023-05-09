@@ -33,7 +33,7 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def destroy
-    # Destroy the images, comments, likes associated to this post and finally delete the post
+    # Destroy the images, comments, reactions associated to this post and finally delete the post
     # TODO: check the implementation of all active record delete methods
     begin
       deleted_post = Posts::Destroyer.new(
